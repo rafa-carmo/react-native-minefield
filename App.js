@@ -1,78 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+ StyleSheet,
+ SafeAreaView,
+ Text
+
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
+
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
+
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+
+import params from './src/params'
+import Field from './src/components/Field'
+
+
+
+export default class App extends React.Component {
+  render(){
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.welcome}> Iniciando o Mines! </Text>
+      <Text style={styles.introduction}>Tamanho da grade:
+      {params.getRowsAmount()} x {params.getColumnsAmount()}</Text>
+
+      <Field />
+      <Field opened />
+      <Field opened nearMines={1} />
+      <Field opened nearMines={2} />
+      <Field opened nearMines={3} />
+      <Field opened nearMines={4} />
+      <Field opened nearMines={5} />
+      <Field opened nearMines={6} />
+    </SafeAreaView>
   );
+  }
 };
 
 const styles = StyleSheet.create({
+
+  container: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -111,4 +87,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
